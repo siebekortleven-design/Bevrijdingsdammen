@@ -3,7 +3,7 @@ import {
   allMoves, applyMove, simpleMoves, captures
 } from './gameLogic.js';
 
-const MAX_DEPTH = 9;
+const MAX_DEPTH = 8;
 
 function getMoveStart(move) {
   return Array.isArray(move[0]) ? move[0][0] : move[0];

@@ -68,7 +68,17 @@ io.on('connection', (socket) => {
     rooms.delete(code);
   });
 });
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 const PORT = process.env.PORT || 10000;
 httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`Game server running on port ${PORT}`);
